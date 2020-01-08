@@ -1,50 +1,64 @@
-// SELECTORS
+// MULTI ELEMENT SELECTOR
+// document.getElementsByClassName
 
-// Single Element Selector - allow one id or class selectoion
-// Milti Element Selector - will allow multi id or class selection
+const items = document.getElementsByClassName('collection-item');
+// console.log(items);
+// console.log(items[0]);
+items[0].style.color = 'red';
+items[3].textContent = 'Hell World';
 
-// SINGLE ELEMENT SELECTOR
-console.log(document.getElementById('task-title'));
+const listItems = document.querySelector('ul').getElementsByClassName('collection-item');
 
-// Get things from the element
-console.log(document.getElementById('task-title').id);
-console.log(document.getElementById('task-title').className);
+console.log(listItems);
 
-// Change styling - best used when implementing events (dynamic functionality)
-document.getElementById('task-title').style.background = 'green';
-document.getElementById('task-title').style.color = 'white';
-document.getElementById('task-title').style.padding = '15px';
+// document.getElementsByTagName (li, ul, img, div, etc )
+let lis = document.getElementsByTagName('li');
+console.log(lis);
+console.log(lis[3]);
+lis[3].style.color = 'red';
+lis[4].textContent = 'Hello World';
 
-const taskTitle = document.getElementById('task-title');
+// Convert HTML Collection into array
+lis = Array.from(lis);
 
-// Change content
-taskTitle.textContent = 'Task List';
-taskTitle.innerText = 'My List';
-taskTitle.innerHTML = '<span style="color: red">Task List</span>';
+// Arrays Method
+lis.reverse();
 
+lis.forEach(function (li) {
+  console.log(li.className);
+  li.textContent = 'Hello World!';
+  li.style.background = 'limegreen'
+  li.style.color = 'white'
+});
 
-//QUERY SELECTOR - ALLOWS ANY SELECTOR
-console.log(document.querySelector('#task-title'));
-console.log(document.querySelector('.card-title'));
-console.log(document.querySelector('h5'));
+console.log(lis)
 
-document.querySelector('li').style.color = 'red';
-document.querySelector('ul li').style.color = 'blue';
+// QYURY SELECTOR ALL - RETURNS A NODE LIST - ALLOWS forEach & array Methods without conversion
 
+const newItems = document.querySelectorAll('ul.collection li.collection-item');
+console.log(newItems);
 
-document.querySelector('li:last-child').style.color = 'blue';
-document.querySelector('li:nth-child(3)').style.color = 'orange';
-document.querySelector('li:nth-child(4)').textContent = 'This is a text!!!';
+newItems.forEach(function (i, index) {
+  i.textContent = `${index} : Hello World!`;
+  i.style.background = 'limegreen'
+  i.style.color = 'white'
+});
 
-document.querySelector('li:nth-child(odd)').style.background = 'purple';
+console.log(newItems);
 
-document.querySelector('li:nth-child(even)').style.background = 'hotpink';
+const liOdd = document.querySelectorAll('li:nth-child(odd)');
+const liEven = document.querySelectorAll('li:nth-child(even)');
 
-// Multi element selector
+// nth:child(odd)
+liOdd.forEach(function (odd, index) {
+  odd.style.background = 'red';
+});
 
-const li = document.querySelectorAll('li');
+console.log(liOdd);
 
+// nth:child(even) Loop
+for (let i = 0; i < liEven.length; i++) {
+  liEven[i].style.background = 'hotpink';
+}
 
-
-
-
+console.log(liEven);
