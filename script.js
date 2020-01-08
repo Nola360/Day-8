@@ -1,62 +1,50 @@
-let val;
+// SELECTORS
 
-// Accesses the element / tags in the html file
-val = document;
-console.log(val);
+// Single Element Selector - allow one id or class selectoion
+// Milti Element Selector - will allow multi id or class selection
 
-val = document.all;
-console.log(val);
+// SINGLE ELEMENT SELECTOR
+console.log(document.getElementById('task-title'));
 
-val = document.all[3];
-console.log(val);
+// Get things from the element
+console.log(document.getElementById('task-title').id);
+console.log(document.getElementById('task-title').className);
 
-val = document.all.length;
-console.log(val);
+// Change styling - best used when implementing events (dynamic functionality)
+document.getElementById('task-title').style.background = 'green';
+document.getElementById('task-title').style.color = 'white';
+document.getElementById('task-title').style.padding = '15px';
 
-val = document.body;
-console.log(val);
+const taskTitle = document.getElementById('task-title');
 
-val = document.head;
-console.log(val);
+// Change content
+taskTitle.textContent = 'Task List';
+taskTitle.innerText = 'My List';
+taskTitle.innerHTML = '<span style="color: red">Task List</span>';
 
 
-// Selectors
+//QUERY SELECTOR - ALLOWS ANY SELECTOR
+console.log(document.querySelector('#task-title'));
+console.log(document.querySelector('.card-title'));
+console.log(document.querySelector('h5'));
 
-val = document.forms;
-console.log(val);
-val = document.forms[0].id;
-console.log(val);
-val = document.forms[0].method;
-console.log(val);
-val = document.forms[0].action;
-console.log(val);
+document.querySelector('li').style.color = 'red';
+document.querySelector('ul li').style.color = 'blue';
 
-val = document.links;
-console.log(val);
 
-val = document.links[0];
-console.log(val);
-val = document.links[0].className[0];
-console.log(val);
-val = document.links[0].id;
-console.log(val);
-val = document.links[0].classList[0];
-console.log(val);
+document.querySelector('li:last-child').style.color = 'blue';
+document.querySelector('li:nth-child(3)').style.color = 'orange';
+document.querySelector('li:nth-child(4)').textContent = 'This is a text!!!';
 
-val = document.images;
-console.log(val);
+document.querySelector('li:nth-child(odd)').style.background = 'purple';
 
-val = document.scripts;
-console.log(val);
+document.querySelector('li:nth-child(even)').style.background = 'hotpink';
 
-val = document.scripts[2].getAttribute('src');
-console.log(val);
+// Multi element selector
 
-// forEach with a collection (forEach is for Arrays only!)
-let scripts = document.scripts;
+const li = document.querySelectorAll('li');
 
-let scriptsArray = Array.from(scripts);
 
-scriptsArray.forEach(function (script) {
-  console.log(script);
-})
+
+
+
